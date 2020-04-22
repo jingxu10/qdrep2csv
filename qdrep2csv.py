@@ -67,10 +67,10 @@ def main():
                         df = pd.DataFrame(list_to_pandas, columns =['nvtx_text', 'nvtx_start', 'nvtx_end', 'device', 'crt_name', 'crt_start', 'crt_end', 'kernel_mangled_name', 'kernel_stream', 'kernel_start', 'kernel_end', 'kernel_duration'])
                         if not os.path.isfile(csv_filename):
                             df.to_csv(csv_filename)
-                            print('Data written to {}'.format(csv_filename))
+                            # print('Data written to {}'.format(csv_filename))
                         else:
                             df.to_csv(csv_filename, mode='a', header=False)
-                            print('Data written to {}'.format(csv_filename))
+                            # print('Data written to {}'.format(csv_filename))
                         list_to_pandas.clear()
                     # print('')
                     # print('nvtx_text: {}'.format(nvtx_text))
