@@ -30,6 +30,7 @@ def main():
     parser.add_argument('sqlite_file')
     args = parser.parse_args()
     csv_filename = args.sqlite_file.replace('.sqlite', '.csv')
+    print('Data will be saved to {}'.format(csv_filename))
     if os.path.isfile(csv_filename):
         g = input('{} exists.\nDo you want to overwrite it? [y]/n: '.format(csv_filename))
         if g == '' or g == 'Y' or g == 'y' or g == 'Yes' or g == 'yes':
