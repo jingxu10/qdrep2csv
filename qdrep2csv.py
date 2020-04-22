@@ -64,14 +64,12 @@ def main():
                     nvtx_start = nvtx[1][0]
                     nvtx_end = nvtx[1][1]
                     list_to_pandas.append([nvtx_text, nvtx_start, nvtx_end, device, crt_name, crt_start, crt_end, knl_name, knl_stream, knl_start, knl_end, knl_dur])
-                    if len(list_to_pandas) > 1000:
+                    if len(list_to_pandas) == 1000:
                         df = pd.DataFrame(list_to_pandas, columns =['nvtx_text', 'nvtx_start', 'nvtx_end', 'device', 'crt_name', 'crt_start', 'crt_end', 'kernel_mangled_name', 'kernel_stream', 'kernel_start', 'kernel_end', 'kernel_duration'])
                         if not os.path.isfile(csv_filename):
-                            df.to_csv(csv_filename)
-                            # print('Data written to {}'.format(csv_filename))
+                            df.to_csv(csv_filename, index=False)
                         else:
-                            df.to_csv(csv_filename, mode='a', header=False)
-                            # print('Data written to {}'.format(csv_filename))
+                            df.to_csv(csv_filename, index=False, mode='a', header=False)
                         list_to_pandas.clear()
                     # print('')
                     # print('nvtx_text: {}'.format(nvtx_text))
